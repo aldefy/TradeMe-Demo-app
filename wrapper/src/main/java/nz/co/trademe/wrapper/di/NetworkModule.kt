@@ -1,5 +1,7 @@
 package nz.co.trademe.wrapper.di
 
+import android.content.Context
+import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import nz.co.trademe.wrapper.BuildConfig
@@ -17,8 +19,7 @@ import javax.inject.Singleton
  * Provides Network API Interface ,OkHttp Cache , OkHttp , Retrofit
  */
 @Module
-class NetworkModule {
-
+class NetworkModule(val context: Context) {
 
     @Provides
     @Singleton
@@ -40,6 +41,7 @@ class NetworkModule {
                     }
                 )
             }
+            .addInterceptor(ChuckInterceptor(context))
             .addInterceptor(logging)
     }
 

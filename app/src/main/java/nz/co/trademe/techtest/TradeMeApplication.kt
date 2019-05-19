@@ -17,7 +17,7 @@ class TradeMeApplication : Application(), HasActivityInjector {
     private val wrapperComponent: WrapperComponent by lazy {
         DaggerWrapperComponent
             .builder()
-            .networkModule(NetworkModule())
+            .networkModule(NetworkModule(applicationContext))
             .build()
     }
 

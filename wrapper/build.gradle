@@ -59,4 +59,6 @@ dependencies {
     implementation networkLibs
     implementation rxJavaLibs
     kapt daggerCompilerLibs
+    releaseImplementation chuckNoOpLibs
+    debugImplementation chuckLibs
 }

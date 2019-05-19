@@ -29,6 +29,7 @@ ext {
             powerMockMockito   : '1.6.5',
             powerMockMockito2  : '2.0.0',
             espressoVersion    : '3.0.2-alpha1',
+            chuck              : '1.1.0',
     ]
 
     loggingDeps = [
@@ -97,6 +98,13 @@ ext {
             okhttp: "com.squareup.okhttp3:okhttp:$versions.okHttp"
     ]
 
+    chuck = [
+            op: "com.readystatesoftware.chuck:library:$versions.chuck"
+    ]
+
+    chuck_noOp = [
+            no_op: "com.readystatesoftware.chuck:library-no-op:$versions.chuck"
+    ]
     moshiDeps = [
             moshiCore  : "com.squareup.moshi:moshi:$versions.moshi",
             moshiKotlin: "com.squareup.moshi:moshi-kotlin:$versions.moshi"
@@ -104,6 +112,8 @@ ext {
 
     supportLibs = supportDeps.values()
     networkLibs = retrofit.values() + okHttp.values() + moshiDeps.values()
+    chuckLibs = chuck.values()
+    chuckNoOpLibs = chuck_noOp.values()
     rxJavaLibs = rxJavaDeps.values()
     dbLib = databaseDep.values()
     daggerLibs = daggerDeps.values()
