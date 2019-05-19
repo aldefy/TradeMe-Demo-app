@@ -24,6 +24,9 @@ Android application tech test for TradeMe
 #### Unit Tests:
 #### Instrumentation Tests:
 
+## Code Styles
+Follows Kotlin Style guide from here: [Kotlin Styles](https://kotlinlang.org/docs/reference/coding-conventions.html)
+
 ## App sepcs
 
 Add additional notes about design system and UI layer.
