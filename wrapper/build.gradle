@@ -1,23 +1,39 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: "$rootDir/gradle/libraries-versions.gradle"
+
+def SANDBOX_CONSUMER_KEY = '"' + SANDBOX_CONSUMER_KEY + '"' ?: '"Define Consumer key"'
+def SANDBOX_CONSUMER_SECRET = '"' + SANDBOX_CONSUMER_SECRET + '"' ?: '"Define Consumer secret"'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
+        versionCode 1
+        versionName "1.0"
+        resConfigs "en"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'reference.conf'
+    }
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
     buildTypes {
@@ -36,17 +52,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    // Network
-    def okHttpVersion = '3.14.0'
-    def retrofitVersion = '2.5.0'
-    def moshiVersion = '1.8.0'
-    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
-    implementation "com.squareup.moshi:moshi:$moshiVersion"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    implementation supportLibs
+    implementation loggingLibs
+    implementation daggerLibs
+    implementation networkLibs
+    implementation rxJavaLibs
+    kapt daggerCompilerLibs
 }
