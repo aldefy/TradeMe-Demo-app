@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+
+    compileOptions {
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
+    }
+
+    defaultConfig {
+        applicationId "nz.co.trademe.techtest"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // Wrapper module
+    implementation project(':wrapper')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+}
