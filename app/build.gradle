@@ -47,4 +47,6 @@ dependencies {
     implementation project(':wrapper')
     implementation supportLibs
     implementation constrainLibs
+    implementation daggerLibs
+    kapt daggerCompilerLibs
 }
