@@ -1,8 +1,10 @@
 package nz.co.trademe.techtest.home.presentation
 
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.uber.autodispose.LifecycleScopeProvider
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -13,6 +15,8 @@ import nz.co.trademe.wrapper.base.plusAssign
 
 class HomeScreen : LifecycleObserver {
     private val _event = MutableLiveData<HomeEvent>()
+    fun getLifecycleProvider(event: Lifecycle.Event): LifecycleScopeProvider<Lifecycle.Event> =  this.getLifecycleProvider(event)
+
     val event: LiveData<HomeEvent> = _event
     fun bind(
         view: HomeView,
