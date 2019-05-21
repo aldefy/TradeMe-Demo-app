@@ -2,14 +2,19 @@ package nz.co.trademe.techtest.di
 
 import dagger.Component
 import nz.co.trademe.techtest.TradeMeApplication
-import nz.co.trademe.wrapper.di.WrapperComponent
-import nz.co.trademe.wrapper.di.scope.ApplicationScope
+import nz.co.trademe.techtest.home.di.HomeModule
+import nz.co.trademe.wrapper.di.NetworkModule
+import javax.inject.Singleton
 
-@ApplicationScope
+@Singleton
 @Component(
-    modules = [(AppModule::class)],
-    dependencies = [(WrapperComponent::class)]
+    modules = [
+        (AppModule::class),
+        (NetworkModule::class),
+        (ViewModelModule::class),
+        (HomeModule::class)
+    ]
 )
 interface AppComponent {
-      fun inject(app: TradeMeApplication)
+    fun inject(app: TradeMeApplication)
 }

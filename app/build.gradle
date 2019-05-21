@@ -49,4 +49,6 @@ dependencies {
     implementation constrainLibs
     implementation daggerLibs
     kapt daggerCompilerLibs
+    implementation project(path: ':utils')
+    implementation project(path: ':customviews')
 }
