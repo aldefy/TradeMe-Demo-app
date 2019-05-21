@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'de.mannodermaus.android-junit5'
 apply from: "$rootDir/gradle/libraries-versions.gradle"
 
 android {
@@ -15,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         resConfigs "en"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -27,10 +29,13 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
         exclude 'reference.conf'
+        exclude 'META-INF/LICENSE.md'
     }
 
     testOptions {
         unitTests.returnDefaultValues = true
+        junitPlatform {
+        }
     }
 
     buildTypes {
@@ -41,9 +46,11 @@ android {
     }
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.0'
     implementation project(':wrapper')
     implementation supportLibs
     implementation constrainLibs
@@ -51,4 +58,9 @@ dependencies {
     kapt daggerCompilerLibs
     implementation project(path: ':utils')
     implementation project(path: ':customviews')
+    testImplementation testLibs
+    testRuntimeOnly testRuntimeLibs
+    testImplementation mockitoLibs
+    implementation autoDisposeLibs
+
 }

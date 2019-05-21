@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'de.mannodermaus.android-junit5'
+
 apply from: "$rootDir/gradle/libraries-versions.gradle"
 
 android {
@@ -28,7 +30,9 @@ android {
     }
 
     testOptions {
-        unitTests.returnDefaultValues = true
+        junitPlatform {
+
+        }
     }
 
     buildTypes {
@@ -44,6 +48,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':wrapper')
     implementation supportLibs
+    implementation testLibs
+    runtimeOnly testRuntimeLibs
+    implementation mockitoLibs
 }
 
 repositories {

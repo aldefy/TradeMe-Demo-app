@@ -48,5 +48,5 @@ dependencies {
     implementation supportLibs
     implementation rxJavaLibs
     implementation project(path: ':utils')
-    compile project(path: ':wrapper')
+    implementation project(path: ':wrapper')
 }

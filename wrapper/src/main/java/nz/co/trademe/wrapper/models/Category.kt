@@ -1,10 +1,12 @@
 package nz.co.trademe.wrapper.models
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 /**
  * Data class representing a category
  */
+@JsonClass(generateAdapter = true)
 data class Category(
     /**
      * A unique identifier for the category e.g. "0004-0369-6076-". We plan to change this to a
