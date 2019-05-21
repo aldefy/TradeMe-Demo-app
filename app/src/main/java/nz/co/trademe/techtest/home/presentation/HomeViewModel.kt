@@ -26,17 +26,7 @@ class HomeViewModel @Inject constructor(
                 _state.value = HomeState.Content.GetCategoriesSuccess(it)
             }, {
                 _state.value = HomeState.Loading.HideLoading
-              /*  networkErrorHandler.getErrorType(it, networkError = {
-                    _state.value = HomeState.Error.NoInternetConnection
-                }, authError = {
-                    _state.value = HomeState.Error.AuthorizationError
-                }, serverError = { message ->
-                    _state.value = HomeState.Error.ServerError(message = message.getOrEmpty())
-                }, serviceIsNotFound = {
-                    _state.value = HomeState.Error.UpdateCategoriesFailed
-                }, defaultError = {
-                    _state.value = HomeState.Error.UpdateCategoriesFailed
-                })*/
+                _state.value = HomeState.Error.UpdateCategoriesFailed
             })
     }
 }
