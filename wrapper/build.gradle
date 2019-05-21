@@ -55,9 +55,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation supportLibs
     implementation loggingLibs
-    implementation daggerLibs
-    implementation networkLibs
-    implementation rxJavaLibs
+    api daggerLibs
+    api networkLibs
+    api rxJavaLibs
+    api archCompLibs
     kapt daggerCompilerLibs
     releaseImplementation chuckNoOpLibs
     debugImplementation chuckLibs

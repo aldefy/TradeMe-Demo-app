@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/gradle/libraries-versions.gradle"
 
 android {
@@ -42,10 +43,10 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation project(':wrapper')
-    implementation supportLibs
-}
 
-repositories {
-    mavenCentral()
+    implementation constrainLibs
+    implementation supportLibs
+    implementation rxJavaLibs
+    implementation project(path: ':utils')
+    compile project(path: ':wrapper')
 }
