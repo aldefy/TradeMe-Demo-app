@@ -30,6 +30,12 @@ ext {
             powerMockMockito2  : '2.0.0',
             espressoVersion    : '3.0.2-alpha1',
             chuck              : '1.1.0',
+            spek               : '1.1.5',
+            mockitoCore        : '2.25.0',
+            powerMockMockito   : '1.6.5',
+            powerMockMockito2  : '2.0.0',
+            autoDispose        : "0.7.0"
+
     ]
 
     loggingDeps = [
@@ -105,9 +111,33 @@ ext {
     chuck_noOp = [
             no_op: "com.readystatesoftware.chuck:library-no-op:$versions.chuck"
     ]
+
     moshiDeps = [
             moshiCore  : "com.squareup.moshi:moshi:$versions.moshi",
             moshiKotlin: "com.squareup.moshi:moshi-kotlin:$versions.moshi"
+    ]
+
+    testDeps = [
+            junit5    : "org.junit.jupiter:junit-jupiter-api:5.2.0",
+            mockServer: "com.squareup.okhttp:mockwebserver:2.7.5",
+            archCore : "android.arch.core:core-testing:1.1.1"
+    ]
+
+    testRuntimeDeps = [
+            junit5: "org.junit.jupiter:junit-jupiter-engine:5.2.0"
+    ]
+
+    mockitoDeps = [
+            mockitoCore   : "org.mockito:mockito-core:$versions.mockitoCore",
+            mockitoAndroid: "org.mockito:mockito-android:2.25.0",
+            mockitoInline : "org.mockito:mockito-inline:2.25.0",
+            mockitoKotlin : "com.nhaarman:mockito-kotlin:1.6.0",
+    ]
+
+    autoDisposeDeps = [
+            autoDispose       : "com.uber.autodispose:autodispose-kotlin:$versions.autoDispose",
+            autoDisposeAndroid: "com.uber.autodispose:autodispose-android-kotlin:$versions.autoDispose",
+            autoDisposeArch   : "com.uber.autodispose:autodispose-android-archcomponents-kotlin:$versions.autoDispose",
     ]
 
     supportLibs = supportDeps.values()
@@ -121,6 +151,10 @@ ext {
     imageLoadingLibs = imageGlideLibs.values()
     loggingLibs = loggingDeps.values()
     constrainLibs = constrainDeps.values()
+    testLibs = testDeps.values()
+    testRuntimeLibs = testRuntimeDeps.values()
+    mockitoLibs = mockitoDeps.values()
+    autoDisposeLibs = autoDisposeDeps.values()
 
     leakCannary = "com.squareup.leakcanary:leakcanary-android:1.5"
     daggerCompilerLibs = daggerCompilerDeps.values()
