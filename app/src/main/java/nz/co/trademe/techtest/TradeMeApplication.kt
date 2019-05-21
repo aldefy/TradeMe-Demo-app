@@ -1,7 +1,7 @@
 package nz.co.trademe.techtest
 
 import android.app.Activity
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -9,7 +9,7 @@ import nz.co.trademe.techtest.di.DaggerAppComponent
 import nz.co.trademe.wrapper.di.NetworkModule
 import javax.inject.Inject
 
-class TradeMeApplication : Application(), HasActivityInjector {
+class TradeMeApplication : MultiDexApplication(), HasActivityInjector {
     @Inject
     lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
     private val networkModule: NetworkModule by lazy {
