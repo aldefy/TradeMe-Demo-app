@@ -7,7 +7,6 @@ import dagger.Provides
 import nz.co.trademe.wrapper.BuildConfig
 import nz.co.trademe.wrapper.TradeMeApi
 import nz.co.trademe.wrapper.TradeMeApiService
-import nz.co.trademe.wrapper.TradeMeNetworkErrorHandler
 import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -57,13 +56,5 @@ class NetworkModule(val context: Context) {
         return TradeMeApi(RxJava2CallAdapterFactory.create(), clientBuilder).get()
     }
 
-    /**
-     * Provides the TradeMeNetworkErrorHandler to handle the error for network errors
-     */
-    @Provides
-    @Singleton
-    internal fun provideNetworkErrorHandler(): TradeMeNetworkErrorHandler {
-        return TradeMeNetworkErrorHandler()
-    }
 
 }
