@@ -43,12 +43,8 @@ class HomeScreen : LifecycleObserver {
             .map { Unit }
             .map {
                 with(view) {
-                    contentView.hide()
-                    loadingView.apply {
-                        show()
-                        startAnimation()
-                    }
-
+                    loadingView.show()
+                    categoriesView.hide()
                 }
             }
             .subscribe()
@@ -58,10 +54,7 @@ class HomeScreen : LifecycleObserver {
             .map { Unit }
             .map {
                 with(view) {
-                      loadingView.apply {
-                          hide()
-                          stopAnimation()
-                      }
+                    loadingView.hide()
                 }
             }
             .subscribe()
@@ -78,7 +71,8 @@ class HomeScreen : LifecycleObserver {
             .map { it as HomeState.Content.GetCategoriesSuccess }
             .map {
                 with(view) {
-                    contentView.show()
+                    categoriesView.clear()
+                    categoriesView.show()
                     categoriesView.setCategories(it.model)
                 }
             }

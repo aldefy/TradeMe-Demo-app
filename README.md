@@ -9,7 +9,7 @@ Android application tech test for TradeMe
 ### Prerequisites
 
 ```
-<placeholder>
+Android Studio 3.4
 ```
 
 ### Installing

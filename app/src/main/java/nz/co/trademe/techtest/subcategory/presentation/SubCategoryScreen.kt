@@ -43,10 +43,9 @@ class SubCategoryScreen : LifecycleObserver {
             .map { Unit }
             .map {
                 with(view) {
-                    contentView.hide()
-                    loadingView.apply {
-                        show()
-                        startAnimation()
+                    with(view) {
+                        loadingView.show()
+                        searchListingView.hide()
                     }
 
                 }
@@ -58,10 +57,7 @@ class SubCategoryScreen : LifecycleObserver {
             .map { Unit }
             .map {
                 with(view) {
-                      loadingView.apply {
-                          hide()
-                          stopAnimation()
-                      }
+                    loadingView.hide()
                 }
             }
             .subscribe()
@@ -78,7 +74,8 @@ class SubCategoryScreen : LifecycleObserver {
             .map { it as SubCategoryState.Content.GetSearchListingsSuccess }
             .map {
                 with(view) {
-                    contentView.show()
+                    searchListingView.clear()
+                    searchListingView.show()
                     searchListingView.setItems(it.model)
                 }
             }
