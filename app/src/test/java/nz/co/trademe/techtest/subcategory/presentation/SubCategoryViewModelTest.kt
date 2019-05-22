@@ -48,6 +48,7 @@ class SubCategoryViewModelTest {
     @Mock
     lateinit var repository: TradeMeRepository
     lateinit var searchCollection: SearchCollection
+    lateinit var searchCollectionFailure: SearchCollection
     lateinit var uc: SubCategoryUseCaseImpl
     lateinit var viewModel: SubCategoryViewModel
     val trampolineSchedulerRule = TrampolineSchedulerRule()
@@ -70,6 +71,10 @@ class SubCategoryViewModelTest {
             modelClass = SearchCollection::class.java,
             rawResource = "search_collection_success_response.json"
         )
+        searchCollectionFailure = load(
+            modelClass = SearchCollection::class.java,
+            rawResource = "search_collection_failure_response.json"
+        )
     }
 
     @Test
@@ -87,6 +92,23 @@ class SubCategoryViewModelTest {
         verify(observer).onChanged(SubCategoryState.Content.GetSearchListingsSuccess(searchCollection))
         verify(observer).onChanged(SubCategoryState.Loading.HideLoading)
         assert(searchCollection.list?.size == 1)
+    }
+
+    @Test
+    fun `should fetch search listings and toggle loading and show error if Search listings is empty`() {
+
+        given(
+            repository.search("0341-4424-4427-",0)
+        ).willReturn(Single.just(searchCollection))
+
+        uc.search("0341-4424-4427-",0) willReturnSingle searchCollectionFailure
+        viewModel.state.observeForever(observer)
+        viewModel.generalSearch("0341-4424-4427-",0)
+
+        verify(observer).onChanged(SubCategoryState.Loading.ShowLoading)
+        verify(observer).onChanged(SubCategoryState.Error.UpdateSearchListingsFailed)
+        verify(observer).onChanged(SubCategoryState.Loading.HideLoading)
+        assert(searchCollectionFailure.list?.size == 0)
     }
 
 }
