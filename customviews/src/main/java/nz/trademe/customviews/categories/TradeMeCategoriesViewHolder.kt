@@ -8,6 +8,7 @@ import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.item_categories.view.*
 import nz.co.trademe.wrapper.models.Category
 import nz.trademe.customviews.R
+import nz.trademe.customviews.TradeMeAdapter
 
 
 class TradeMeCategoriesViewHolder(val view: View) : RecyclerView.ViewHolder(view) {

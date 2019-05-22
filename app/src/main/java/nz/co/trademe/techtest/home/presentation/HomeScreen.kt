@@ -43,10 +43,10 @@ class HomeScreen : LifecycleObserver {
             .map {
                 with(view) {
                     contentView.hide()
-                    loadingView.apply {
+                    /*loadingView.apply {
                         show()
                         startAnimation()
-                    }
+                    }*/
 
                 }
             }
@@ -57,10 +57,10 @@ class HomeScreen : LifecycleObserver {
             .map { Unit }
             .map {
                with(view){
-                   loadingView.apply {
+                 /*  loadingView.apply {
                        hide()
                        stopAnimation()
-                   }
+                   }*/
                }
             }
             .subscribe()

@@ -20,30 +20,36 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="@string/app_name"
         />
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:orientation="vertical">
+        <nz.trademe.customviews.navigationbar.NavigationBarView
+                android:id="@+id/navigationBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
         <nz.trademe.customviews.categories.TradeMeCategoriesView
                 android:id="@+id/rvCategories"
                 android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/navigationBar"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
+        />
         <nz.trademe.customviews.TradeMeShimmerView
                 android:id="@+id/viewLoading"
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="0dp"/>
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

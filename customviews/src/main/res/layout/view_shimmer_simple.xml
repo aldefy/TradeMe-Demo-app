@@ -11,8 +11,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="22dp"
-            android:background="@color/shimmer_color"
-            app:cardBackgroundColor="@color/shimmer_color"
+            android:background="@color/shimmer"
+            app:cardBackgroundColor="@color/shimmer"
             app:cardCornerRadius="8dp"/>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package nz.trademe.customviews.categories
+package nz.trademe.customviews
 
 import android.view.View
 import android.view.ViewGroup

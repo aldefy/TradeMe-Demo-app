@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        tools:background="@color/cardview_dark_background"
+        android:id="@+id/relativeLayout">
+
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imagePath"
+            app:srcCompat="@drawable/ic_right"
+            android:background="@null"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/textNavigation"
+            android:layout_alignBottom="@+id/textNavigation"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textNavigation"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imagePath"
+            android:layout_toEndOf="@+id/imagePath"
+            android:gravity="center"
+            tools:text="Category"
+            android:textSize="16sp"
+            android:minWidth="20dp"
+            android:textColor="#ffffff"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+</RelativeLayout>

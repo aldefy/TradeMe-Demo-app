@@ -35,13 +35,8 @@ public class RxUi {
      * @return {@link Function} that can be used to {@link #bind(Observable, Function)} {@link Observable} to some UI action.
      */
     public static <T> Function<Observable<T>, Disposable> ui(final Consumer<T> uiAction) {
-        return new Function<Observable<T>, Disposable>() {
-            @Override
-            public Disposable apply(Observable<T> observable) {
-                return observable
-                        .observeOn(mainThread())
-                        .subscribe(uiAction);
-            }
-        };
+        return observable -> observable
+                .observeOn(mainThread())
+                .subscribe(uiAction);
     }
 }

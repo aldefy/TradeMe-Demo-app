@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.layout_categories.view.*
 import nz.co.trademe.techtest.utils.asVerticalList
 import nz.co.trademe.wrapper.models.Category
 import nz.trademe.customviews.R
+import nz.trademe.customviews.TradeMeAdapter
 
 
 class TradeMeCategoriesView @JvmOverloads constructor(

@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name="nz.co.trademe.techtest.home.SubCategoryActivity"/>
     </application>
 
 </manifest>

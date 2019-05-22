@@ -7,7 +7,6 @@ ext {
     compilerVersion = "$androidGradlePluginVersion"
     kotlin_version = '1.3.21'
 
-    usePowerMockv2 = true
 
     versions = [
             coroutineVersion   : "1.1.1",
@@ -26,12 +25,9 @@ ext {
             room               : "2.0.0-alpha07",
             constrains         : "2.0.0-alpha2",
             mockitoCore        : '2.25.0',
-            powerMockMockito   : '1.6.5',
-            powerMockMockito2  : '2.0.0',
             espressoVersion    : '3.0.2-alpha1',
             chuck              : '1.1.0',
             spek               : '1.1.5',
-            mockitoCore        : '2.25.0',
             powerMockMockito   : '1.6.5',
             powerMockMockito2  : '2.0.0',
             autoDispose        : "0.7.0"
@@ -119,7 +115,7 @@ ext {
 
     testDeps = [
             junit5    : "org.junit.jupiter:junit-jupiter-api:5.2.0",
-            mockServer: "com.squareup.okhttp:mockwebserver:2.7.5",
+         //   mockServer: "com.squareup.okhttp:mockwebserver:2.7.5",
             archCore : "android.arch.core:core-testing:1.1.1"
     ]
 

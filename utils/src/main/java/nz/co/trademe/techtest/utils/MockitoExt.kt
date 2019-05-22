@@ -6,3 +6,6 @@ import org.mockito.BDDMockito
 
 infix fun <T> Single<T>?.willReturnSingle(value: T): BDDMockito.BDDMyOngoingStubbing<Single<T>?> =
     given(this).willReturn(Single.just(value))
+
+infix fun <T> Single<T>?.willReturnSingleError(value: Throwable): BDDMockito.BDDMyOngoingStubbing<Single<T>?> =
+    given(this).willReturn(Single.error(value))
