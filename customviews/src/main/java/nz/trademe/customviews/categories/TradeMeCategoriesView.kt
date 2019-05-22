@@ -19,7 +19,7 @@ class TradeMeCategoriesView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private val item: PublishSubject<Category> = PublishSubject.create()
-    private var adapter: TradeMeAdapter<Category, TradeMeCategoriesViewHolder>? = null
+    private lateinit var adapter: TradeMeAdapter<Category, TradeMeCategoriesViewHolder>
 
     init {
         View.inflate(context, R.layout.layout_categories, this)
@@ -46,9 +46,13 @@ class TradeMeCategoriesView @JvmOverloads constructor(
     }
 
     fun setCategories(model: Category?) {
-        adapter?.items?.clear()
-        adapter?.safeAddAll(model?.subcategories)
+        adapter.items.clear()
+        adapter.safeAddAll(model?.subcategories)
     }
 
     fun setCategoriesListener() = item.hide()
+
+    fun clear() {
+        adapter.clear()
+    }
 }

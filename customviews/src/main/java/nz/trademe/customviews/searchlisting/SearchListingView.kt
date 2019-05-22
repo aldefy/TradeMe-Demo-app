@@ -20,7 +20,7 @@ class SearchListingView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private val item: PublishSubject<SearchListing> = PublishSubject.create()
-    private var adapter: TradeMeAdapter<SearchListing, SearchListingViewHolder>? = null
+    private lateinit var adapter: TradeMeAdapter<SearchListing, SearchListingViewHolder>
 
     init {
         View.inflate(context, R.layout.layout_search_listing, this)
@@ -47,8 +47,12 @@ class SearchListingView @JvmOverloads constructor(
     }
 
     fun setItems(model: SearchCollection?) {
-        adapter?.items?.clear()
-        adapter?.safeAddAll(model?.list ?: emptyList())
+        adapter.items.clear()
+        adapter.safeAddAll(model?.list ?: emptyList())
+    }
+
+    fun clear() {
+        adapter.clear()
     }
 
     fun setListingsListener() = item.hide()
