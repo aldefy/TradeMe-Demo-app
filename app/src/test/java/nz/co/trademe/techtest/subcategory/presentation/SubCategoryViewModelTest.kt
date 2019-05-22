@@ -15,7 +15,6 @@ import nz.co.trademe.techtest.subcategory.presentation.SubCategoryState
 import nz.co.trademe.techtest.subcategory.presentation.SubCategoryViewImpl
 import nz.co.trademe.techtest.subcategory.presentation.SubCategoryViewModel
 import nz.co.trademe.techtest.utils.Rx2SchedulersOverrideRule
-import nz.co.trademe.techtest.utils.TrampolineSchedulerRule
 import nz.co.trademe.techtest.utils.load
 import nz.co.trademe.techtest.utils.willReturnSingle
 import nz.co.trademe.wrapper.models.SearchCollection
@@ -37,7 +36,6 @@ class SubCategoryViewModelTest {
     @Rule
     @JvmField
     var instantTaskExecutorRule = InstantTaskExecutorRule()
-    private lateinit var vm: SubCategoryViewModel
 
     @Mock
     lateinit var screen: SubCategoryScreen
@@ -51,7 +49,6 @@ class SubCategoryViewModelTest {
     lateinit var searchCollectionFailure: SearchCollection
     lateinit var uc: SubCategoryUseCaseImpl
     lateinit var viewModel: SubCategoryViewModel
-    val trampolineSchedulerRule = TrampolineSchedulerRule()
 
 
     @Before

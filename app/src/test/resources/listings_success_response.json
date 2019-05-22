@@ -1,0 +1,92 @@
+{
+  "ListingId": 2147775516,
+  "Title": "Product LITE1-0245",
+  "Category": "0351-2489-6443-",
+  "StartPrice": 15.08,
+  "BuyNowPrice": 95,
+  "StartDate": "/Date(1558141297857)/",
+  "EndDate": "/Date(1558659600000)/",
+  "ListingLength": null,
+  "AsAt": "/Date(1558538988510)/",
+  "CategoryPath": "/Baby-gear/Baby-carriers/Backpacks",
+  "RegionId": 2,
+  "Region": "Auckland",
+  "SuburbId": 17,
+  "Suburb": "Papakura",
+  "ViewCount": 2,
+  "HasReserve": true,
+  "HasBuyNow": true,
+  "NoteDate": "/Date(0)/",
+  "CategoryName": "Backpacks",
+  "ReserveState": 2,
+  "Attributes": [],
+  "OpenHomes": [],
+  "Subtitle": "Ranked 245 in the Sandbox",
+  "MinimumNextBidAmount": 15.08,
+  "PriceDisplay": "$15.08",
+  "AdditionalData": {
+    "BulletPoints": [],
+    "Tags": []
+  },
+  "Member": {
+    "MemberId": 4000744,
+    "Nickname": "liteweight",
+    "DateAddressVerified": "/Date(1365336000000)/",
+    "DateJoined": "/Date(1365336000000)/",
+    "UniqueNegative": 1,
+    "UniquePositive": 6,
+    "FeedbackCount": 5,
+    "IsAddressVerified": true,
+    "Suburb": "Papakura",
+    "Region": "Auckland",
+    "IsAuthenticated": true
+  },
+  "Body": "Product LITE1-0245\r\nStart = 15.08, Reserve = 55.04, Buy Now = 95.00",
+  "Photos": [],
+  "AllowsPickups": 1,
+  "ShippingOptions": [
+    {
+      "Type": 4,
+      "Price": 6.78,
+      "Method": "Slow courier",
+      "ShippingId": 4
+    },
+    {
+      "Type": 4,
+      "Price": 12.34,
+      "Method": "Fast courier",
+      "ShippingId": 5
+    },
+    {
+      "Type": 4,
+      "Price": 0,
+      "Method": "with Buy Now",
+      "ShippingId": 6
+    },
+    {
+      "Type": 2,
+      "Price": 0,
+      "Method": "I intend to pick-up",
+      "ShippingId": 2
+    }
+  ],
+  "PaymentOptions": "Cash",
+  "CanAddToCart": false,
+  "EmbeddedContent": {},
+  "SupportsQuestionsAndAnswers": true,
+  "PaymentMethods": [
+    {
+      "Id": 4,
+      "Name": "Cash"
+    }
+  ],
+  "BoundaryImage": {
+    "Thumbnail": null,
+    "List": null,
+    "Medium": null,
+    "Gallery": null,
+    "Large": null,
+    "FullSize": null,
+    "PhotoId": 0
+  }
+}

@@ -42,7 +42,6 @@ class HomeViewModelTest {
     lateinit var categoriesResponse: Category
     lateinit var uc: HomeUseCaseImpl
     lateinit var viewModel: HomeViewModel
-    val trampolineSchedulerRule = TrampolineSchedulerRule()
 
 
     @Before
