@@ -14,9 +14,9 @@ ext {
             okHttp             : "3.12.3",
             retrofit           : '2.5.0',
             dagger             : '2.22.1',
+            glide              : '4.9.0',
             moshi              : '1.8.0',
             lifecycle          : '2.0.0',
-            glide              : '4.8.0',
             timber             : '4.7.1',
             logger             : '2.2.0',
             debugDB            : '1.0.4',
@@ -77,6 +77,10 @@ ext {
             dagger_android_processor: "com.google.dagger:dagger-android-processor:$versions.dagger"
     ]
 
+    glideCompilerDeps = [
+            compiler : "com.github.bumptech.glide:compiler:$versions.glide"
+    ]
+
     databaseDep = [
             roomRxjava2: "androidx.room:room-rxjava2:$versions.room",
             room       : "androidx.room:room-runtime:$versions.room"
@@ -114,9 +118,9 @@ ext {
     ]
 
     testDeps = [
-            junit5    : "org.junit.jupiter:junit-jupiter-api:5.2.0",
-         //   mockServer: "com.squareup.okhttp:mockwebserver:2.7.5",
-            archCore : "android.arch.core:core-testing:1.1.1"
+            junit5  : "org.junit.jupiter:junit-jupiter-api:5.2.0",
+            //   mockServer: "com.squareup.okhttp:mockwebserver:2.7.5",
+            archCore: "android.arch.core:core-testing:1.1.1"
     ]
 
     testRuntimeDeps = [
@@ -154,6 +158,7 @@ ext {
 
     leakCannary = "com.squareup.leakcanary:leakcanary-android:1.5"
     daggerCompilerLibs = daggerCompilerDeps.values()
+    imageLoadingCompileLibs = glideCompilerDeps.values()
     roomCompiler = "androidx.room:room-compiler:$versions.room"
     archCompCompiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
 }

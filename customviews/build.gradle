@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 apply from: "$rootDir/gradle/libraries-versions.gradle"
 
 android {
@@ -47,6 +49,8 @@ dependencies {
     implementation constrainLibs
     implementation supportLibs
     implementation rxJavaLibs
+    api imageLoadingLibs
+    kapt imageLoadingCompileLibs
     implementation project(path: ':utils')
     implementation project(path: ':wrapper')
 }

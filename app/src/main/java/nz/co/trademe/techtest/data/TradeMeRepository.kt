@@ -1,4 +1,4 @@
-package nz.co.trademe.techtest.home.data
+package nz.co.trademe.techtest.data
 
 import io.reactivex.Single
 import nz.co.trademe.wrapper.TradeMeApiService
@@ -7,13 +7,13 @@ import nz.co.trademe.wrapper.models.ListedItemDetail
 import nz.co.trademe.wrapper.models.SearchCollection
 import javax.inject.Inject
 
-interface HomeRepository {
+interface TradeMeRepository {
     /**
      * Retrieve the top listings [SearchCollection] for the provided [categoryNumber]
      *
      * This is a paged request, starting at page 0
      */
-    fun getTopCategoryListings(categoryNumber: String, page: Int): Single<SearchCollection>
+    fun search(categoryNumber: String, page: Int): Single<SearchCollection?>
 
     /**
      * Retrieve general categories
@@ -28,8 +28,8 @@ interface HomeRepository {
     fun getListing(listingId: Long): Single<ListedItemDetail>
 }
 
-class HomeRepositoryImpl @Inject constructor(private val service: TradeMeApiService) : HomeRepository {
-    override fun getTopCategoryListings(categoryNumber: String, page: Int): Single<SearchCollection> {
+class TradeMeRepositoryImpl @Inject constructor(private val service: TradeMeApiService) : TradeMeRepository {
+    override fun search(categoryNumber: String, page: Int): Single<SearchCollection?> {
         val filters = hashMapOf(
             "category" to categoryNumber,
             "page" to page.toString(),

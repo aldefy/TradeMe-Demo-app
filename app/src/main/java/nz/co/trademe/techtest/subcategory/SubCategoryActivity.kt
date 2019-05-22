@@ -1,4 +1,4 @@
-package nz.co.trademe.techtest.home
+package nz.co.trademe.techtest.subcategory
 
 import android.R
 import android.content.Context
@@ -9,13 +9,14 @@ import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_home.*
 import nz.co.trademe.techtest.home.presentation.*
+import nz.co.trademe.techtest.subcategory.presentation.*
 import nz.co.trademe.wrapper.base.BaseViewModelActivity
 import nz.co.trademe.wrapper.base.ViewModelFactory
 import nz.co.trademe.wrapper.base.plusAssign
 import javax.inject.Inject
 
-
-class SubCategoryActivity : BaseViewModelActivity<HomeViewModel, HomeState>() {
+const val GENERAL_SEARCH_ROWS = "20"
+class SubCategoryActivity : BaseViewModelActivity<SubCategoryViewModel, SubCategoryState>() {
 
     companion object {
         val EXTRA_CATEGORY_ID = "category_id"
@@ -29,28 +30,27 @@ class SubCategoryActivity : BaseViewModelActivity<HomeViewModel, HomeState>() {
         }
     }
 
-    override val clazz: Class<HomeViewModel> by lazy { HomeViewModel::class.java }
-    private val view by lazy { HomeViewImpl(findViewById(R.id.content)) }
-    private val screen by lazy { HomeScreen() }
+    override val clazz: Class<SubCategoryViewModel> by lazy { SubCategoryViewModel::class.java }
+    private val view by lazy { SubCategoryViewImpl(findViewById(R.id.content)) }
+    private val screen by lazy { SubCategoryScreen() }
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     override val vm by lazy {
-        ViewModelProviders.of(this@SubCategoryActivity, viewModelFactory).get(HomeViewModel::class.java)
+        ViewModelProviders.of(this@SubCategoryActivity, viewModelFactory).get(SubCategoryViewModel::class.java)
     }
     var categoryId: String = "0"
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(nz.co.trademe.techtest.R.layout.activity_home)
+        setContentView(nz.co.trademe.techtest.R.layout.activity_sub_category)
         setObservers()
         if (intent.hasExtra(EXTRA_CATEGORY_ID))
             categoryId = intent.extras.getString(EXTRA_CATEGORY_ID)
-        vm.getTopLevelCategories(categoryId)
+        vm.generalSearch(categoryId,0)
     }
 
-    override fun getLayoutId() = nz.co.trademe.techtest.R.layout.activity_home
+    override fun getLayoutId() = nz.co.trademe.techtest.R.layout.activity_sub_category
 
     override fun getLifecycleObserver() = screen
 
@@ -62,12 +62,9 @@ class SubCategoryActivity : BaseViewModelActivity<HomeViewModel, HomeState>() {
             if (intent.hasExtra(EXTRA_CATEGORY_NAME))
                 title = intent.extras.getString(EXTRA_CATEGORY_NAME)
         }
-        compositeBag += view.categoriesView.setCategoriesListener()
+        compositeBag += view.searchListingView.setListingsListener()
             ?.subscribe { category ->
-                if (!category.isLeaf) {
-                    vm.getTopLevelCategories(category.id)
-                } else {
-                }
+
             }!!
     }
 
@@ -87,13 +84,13 @@ class SubCategoryActivity : BaseViewModelActivity<HomeViewModel, HomeState>() {
     }
 
     private fun setupScreenEvent() {
-        fun reloadCategoriesEvent() {
-            vm.getTopLevelCategories("0")
+        fun reloadSearchListings() {
+            vm.generalSearch(categoryId,0)
         }
 
         screen.event.observe(this, Observer { event ->
             when (event) {
-                is HomeEvent.ReloadCategories -> reloadCategoriesEvent()
+                is SubCategoryEvent.ReloadSearchListing -> reloadSearchListings()
             }
         })
     }

@@ -7,6 +7,7 @@ import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_home.*
 import nz.co.trademe.techtest.R
 import nz.co.trademe.techtest.home.presentation.*
+import nz.co.trademe.techtest.subcategory.SubCategoryActivity
 import nz.co.trademe.techtest.utils.hide
 import nz.co.trademe.techtest.utils.show
 import nz.co.trademe.wrapper.base.BaseViewModelActivity

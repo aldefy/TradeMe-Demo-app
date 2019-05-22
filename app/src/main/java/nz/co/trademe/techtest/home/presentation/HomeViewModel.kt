@@ -29,4 +29,5 @@ class HomeViewModel @Inject constructor(
                 _state.value = HomeState.Error.UpdateCategoriesFailed
             })
     }
+
 }

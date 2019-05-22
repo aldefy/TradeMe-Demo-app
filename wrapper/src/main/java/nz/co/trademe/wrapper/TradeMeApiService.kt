@@ -35,7 +35,7 @@ interface TradeMeApiService {
      * [Trade Me Api Reference]("https://developer.trademe.co.nz/api-reference/search-methods/general-search/")
      */
     @GET("v1/Search/General.json")
-    fun generalSearch(@QueryMap filters: Map<String, String>): Single<SearchCollection>
+    fun generalSearch(@QueryMap filters: Map<String, String>): Single<SearchCollection?>
 
     /**
      * Retrieve general categories

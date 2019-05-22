@@ -1,4 +1,4 @@
-package nz.co.trademe.techtest.home.presentation
+package nz.co.trademe.techtest.subcategory.presentation
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
@@ -13,15 +13,15 @@ import nz.co.trademe.techtest.utils.hide
 import nz.co.trademe.techtest.utils.show
 import nz.co.trademe.wrapper.base.plusAssign
 
-class HomeScreen : LifecycleObserver {
-    private val _event = MutableLiveData<HomeEvent>()
+class SubCategoryScreen : LifecycleObserver {
+    private val _event = MutableLiveData<SubCategoryEvent>()
     fun getLifecycleProvider(event: Lifecycle.Event): LifecycleScopeProvider<Lifecycle.Event> =
         this.getLifecycleProvider(event)
 
-    val event: LiveData<HomeEvent> = _event
+    val event: LiveData<SubCategoryEvent> = _event
     fun bind(
-        view: HomeView,
-        observable: Observable<HomeState>
+        view: SubCategoryView,
+        observable: Observable<SubCategoryState>
     ): Disposable {
         val compositeBag = CompositeDisposable()
 
@@ -34,12 +34,12 @@ class HomeScreen : LifecycleObserver {
 
 
     private fun loading(
-        view: HomeView,
+        view: SubCategoryView,
         compositeBag: CompositeDisposable,
-        observable: Observable<HomeState>
+        observable: Observable<SubCategoryState>
     ) {
         compositeBag += observable
-            .filter { it is HomeState.Loading.ShowLoading }
+            .filter { it is SubCategoryState.Loading.ShowLoading }
             .map { Unit }
             .map {
                 with(view) {
@@ -54,7 +54,7 @@ class HomeScreen : LifecycleObserver {
             .subscribe()
 
         compositeBag += observable
-            .filter { it is HomeState.Loading.HideLoading }
+            .filter { it is SubCategoryState.Loading.HideLoading }
             .map { Unit }
             .map {
                 with(view) {
@@ -69,27 +69,27 @@ class HomeScreen : LifecycleObserver {
     }
 
     private fun content(
-        view: HomeView,
+        view: SubCategoryView,
         compositeBag: CompositeDisposable,
-        observable: Observable<HomeState>
+        observable: Observable<SubCategoryState>
     ) {
         compositeBag += observable
-            .filter { it is HomeState.Content.GetCategoriesSuccess }
-            .map { it as HomeState.Content.GetCategoriesSuccess }
+            .filter { it is SubCategoryState.Content.GetSearchListingsSuccess }
+            .map { it as SubCategoryState.Content.GetSearchListingsSuccess }
             .map {
                 with(view) {
                     contentView.show()
-                    categoriesView.setCategories(it.model)
+                    searchListingView.setItems(it.model)
                 }
             }
             .map { Unit }
-            .bind(view.showCategoriesView)
+            .bind(view.showSearchListingView)
     }
 
     private fun error(
-        view: HomeView,
+        view: SubCategoryView,
         compositeBag: CompositeDisposable,
-        observable: Observable<HomeState>
+        observable: Observable<SubCategoryState>
     ) {
     }
 }

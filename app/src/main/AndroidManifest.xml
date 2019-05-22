@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="nz.co.trademe.techtest.home.SubCategoryActivity"/>
+        <activity android:name="nz.co.trademe.techtest.subcategory.SubCategoryActivity"/>
     </application>
 
 </manifest>

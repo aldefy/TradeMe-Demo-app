@@ -1,10 +1,12 @@
 package nz.co.trademe.wrapper.models
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 /**
  * Data class representing a search response
  */
+@JsonClass(generateAdapter = true)
 data class SearchCollection(
     /** The index of the current page of results (starts at 1).  */
     @Json(name = "Page")

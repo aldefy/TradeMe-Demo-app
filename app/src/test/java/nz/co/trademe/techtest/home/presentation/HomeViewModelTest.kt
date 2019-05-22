@@ -8,7 +8,7 @@ import com.nhaarman.mockito_kotlin.verify
 import com.uber.autodispose.LifecycleScopeProvider
 import com.uber.autodispose.TestLifecycleScopeProvider
 import io.reactivex.Single
-import nz.co.trademe.techtest.home.data.HomeRepository
+import nz.co.trademe.techtest.data.TradeMeRepository
 import nz.co.trademe.techtest.home.domain.HomeUseCaseImpl
 import nz.co.trademe.techtest.utils.*
 import nz.co.trademe.wrapper.models.Category
@@ -31,8 +31,6 @@ class HomeViewModelTest {
     @Rule
     @JvmField
     var instantTaskExecutorRule = InstantTaskExecutorRule()
-    private lateinit var vm: HomeViewModel
-
     @Mock
     lateinit var screen: HomeScreen
     @Mock
@@ -40,7 +38,7 @@ class HomeViewModelTest {
     @Mock
     lateinit var observer: Observer<HomeState>
     @Mock
-    lateinit var repository: HomeRepository
+    lateinit var repository: TradeMeRepository
     lateinit var categoriesResponse: Category
     lateinit var uc: HomeUseCaseImpl
     lateinit var viewModel: HomeViewModel
@@ -55,7 +53,7 @@ class HomeViewModelTest {
             .thenReturn(testLifecycleProvider as LifecycleScopeProvider<Lifecycle.Event>)
 
         uc = HomeUseCaseImpl(
-            homeRepository = repository
+            tradeMeRepository = repository
         )
         viewModel = HomeViewModel(
             homeUseCase = uc

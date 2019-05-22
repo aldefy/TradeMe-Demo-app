@@ -15,6 +15,8 @@ import okhttp3.MediaType
 import okhttp3.Protocol
 import okhttp3.ResponseBody
 import retrofit2.HttpException
+import java.text.NumberFormat
+import java.util.*
 
 fun String?.getOrEmpty(): String {
     return if (this == null || TextUtils.isEmpty(this)) "" else this
@@ -104,5 +106,9 @@ fun Any.httpExceptionFactory(
         ), response
     )
     return HttpException(response1)
+}
+
+fun formatNumberToCurrency(number: Double): String {
+    return NumberFormat.getCurrencyInstance(Locale.ENGLISH).format(number)
 }
 

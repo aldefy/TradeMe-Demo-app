@@ -1,0 +1,37 @@
+{
+  "TotalCount": 1,
+  "Page": 1,
+  "PageSize": 1,
+  "List": [
+    {
+      "ListingId": 2147775192,
+      "Title": "Carbon Credit - zero flatulence",
+      "Category": "0010-6327-",
+      "StartPrice": 0,
+      "StartDate": "/Date(1558097733130)/",
+      "EndDate": "/Date(1558616133130)/",
+      "ListingLength": null,
+      "IsFeatured": true,
+      "HasGallery": true,
+      "IsBold": true,
+      "AsAt": "/Date(1558515435261)/",
+      "CategoryPath": "/Business-farming-industry/Carbon-credits",
+      "PictureHref": "https://images.tmsandbox.co.nz/photoserver/thumb/4134581.jpg",
+      "Region": "Auckland",
+      "Suburb": "Auckland City",
+      "NoteDate": "/Date(0)/",
+      "ReserveState": 3,
+      "IsClassified": true,
+      "Subtitle": "Classified listing",
+      "PriceDisplay": "Asking price: $800.00",
+      "PromotionId": 4,
+      "AdditionalData": {
+        "BulletPoints": [],
+        "Tags": []
+      },
+      "MemberId": 4000155
+    }
+  ],
+  "DidYouMean": "",
+  "FoundCategories": []
+}
