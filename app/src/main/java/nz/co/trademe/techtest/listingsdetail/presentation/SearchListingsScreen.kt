@@ -31,7 +31,6 @@ class SearchListingsScreen : LifecycleObserver {
     }
 
 
-
     private fun content(
         view: SearchListingsDetailView,
         compositeBag: CompositeDisposable,
@@ -43,7 +42,8 @@ class SearchListingsScreen : LifecycleObserver {
             .map {
                 with(view) {
                     it.model?.photos?.let {
-                        Glide.with(context).load(it[0].value.large).fitCenter().into(photoListingView)
+                        if (it.size > 0)
+                            Glide.with(context).load(it[0].value.large).fitCenter().into(photoListingView)
                     }
                     textListingName.text = it.model?.title ?: ""
                 }

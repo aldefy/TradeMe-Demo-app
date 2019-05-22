@@ -17,14 +17,26 @@ class SubCategoryViewModel @Inject constructor(
     private val _state = MutableLiveData<SubCategoryState>()
     val state: LiveData<SubCategoryState> = _state
 
-    fun generalSearch(categoryNumber: String,page: Int) {
-        compositeBag += subCategoryUseCase.search(categoryNumber,page)
+    fun generalSearch(categoryNumber: String, page: Int) {
+        compositeBag += subCategoryUseCase.search(categoryNumber, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { _state.value = SubCategoryState.Loading.ShowLoading }
             .subscribe({
                 _state.value = SubCategoryState.Loading.HideLoading
-                _state.value = SubCategoryState.Content.GetSearchListingsSuccess(it)
+                if (it != null) {
+                    if (it.list != null) {
+                        if (it.list!!.isNotEmpty()) {
+                            _state.value = SubCategoryState.Content.GetSearchListingsSuccess(it)
+                        } else {
+                            _state.value = SubCategoryState.Error.UpdateSearchListingsFailed
+                        }
+                    } else {
+                        _state.value = SubCategoryState.Content.GetSearchListingsSuccess(it)
+                    }
+                } else {
+                    _state.value = SubCategoryState.Content.GetSearchListingsSuccess(it)
+                }
             }, {
                 _state.value = SubCategoryState.Loading.HideLoading
                 _state.value = SubCategoryState.Error.UpdateSearchListingsFailed

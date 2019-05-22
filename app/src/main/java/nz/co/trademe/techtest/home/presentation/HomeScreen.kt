@@ -85,5 +85,16 @@ class HomeScreen : LifecycleObserver {
         compositeBag: CompositeDisposable,
         observable: Observable<HomeState>
     ) {
+        compositeBag += observable
+            .filter { it is HomeState.Error.UpdateCategoriesFailed }
+            .map { it as HomeState.Error.UpdateCategoriesFailed }
+            .map {
+                with(view) {
+                    categoriesView.hide()
+                    loadingView.hide()
+                }
+            }
+            .map { Unit }
+            .bind(view.showErrorView)
     }
 }

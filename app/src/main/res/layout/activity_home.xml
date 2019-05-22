@@ -48,6 +48,13 @@
                 android:layout_width="match_parent"
                 android:layout_centerInParent="true"
                 android:layout_height="wrap_content"/>
+
+        <nz.trademe.customviews.ErrorView
+                android:layout_width="match_parent"
+                android:id="@+id/viewError"
+                android:visibility="gone"
+                android:layout_below="@+id/navigationBar"
+                android:layout_height="match_parent"/>
     </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

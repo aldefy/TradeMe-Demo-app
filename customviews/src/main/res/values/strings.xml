@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">customviews</string>
+    <string name="oops_seems_like_something_went_wrong">Oops , seems like something went wrong</string>
 </resources>

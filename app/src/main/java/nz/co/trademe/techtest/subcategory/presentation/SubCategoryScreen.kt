@@ -88,5 +88,16 @@ class SubCategoryScreen : LifecycleObserver {
         compositeBag: CompositeDisposable,
         observable: Observable<SubCategoryState>
     ) {
+        compositeBag += observable
+            .filter { it is SubCategoryState.Error.UpdateSearchListingsFailed }
+            .map { it as SubCategoryState.Error.UpdateSearchListingsFailed }
+            .map {
+                with(view) {
+                    searchListingView.hide()
+                    loadingView.hide()
+                }
+            }
+            .map { Unit }
+            .bind(view.showErrorView)
     }
 }
