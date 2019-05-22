@@ -58,5 +58,7 @@ class SearchListingViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
             .placeholder(R.drawable.ic_alert)
             .centerCrop()
             .into(pictureHref)
+        if (parentLayout.visibility == View.INVISIBLE)
+            parentLayout.visibility = View.VISIBLE
     }
 }

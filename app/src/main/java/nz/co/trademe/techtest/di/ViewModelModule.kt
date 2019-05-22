@@ -6,6 +6,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import nz.co.trademe.techtest.home.presentation.HomeViewModel
+import nz.co.trademe.techtest.listingsdetail.presentation.SearchListingsViewModel
 import nz.co.trademe.techtest.subcategory.presentation.SubCategoryViewModel
 import nz.co.trademe.wrapper.base.ViewModelFactory
 import nz.co.trademe.wrapper.di.scope.ViewModelKey
@@ -25,4 +26,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SubCategoryViewModel::class)
     internal abstract fun bindSubCategoryViewModel(viewModel: SubCategoryViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchListingsViewModel::class)
+    internal abstract fun bindSearchListingsViewModel(viewModel: SearchListingsViewModel): ViewModel
 }

@@ -5,6 +5,7 @@ import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import nz.co.trademe.techtest.home.HomeActivity
+import nz.co.trademe.techtest.listingsdetail.SearchListingDetailsActivity
 import nz.co.trademe.techtest.subcategory.SubCategoryActivity
 import nz.co.trademe.wrapper.di.scope.ActivityScope
 
@@ -23,4 +24,8 @@ abstract class AppModule {
     @ActivityScope
     @ContributesAndroidInjector()
     abstract fun contributesSubCategoryActivityInjector(): SubCategoryActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector()
+    abstract fun contributesSearchListingDetailsActivityInjector(): SearchListingDetailsActivity
 }

@@ -20,6 +20,8 @@
         </activity>
 
         <activity android:name="nz.co.trademe.techtest.subcategory.SubCategoryActivity"/>
+        <activity android:name="nz.co.trademe.techtest.listingsdetail.SearchListingDetailsActivity"/>
+
     </application>
 
 </manifest>

@@ -4,18 +4,19 @@ import android.R
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_home.*
 import nz.co.trademe.techtest.home.presentation.*
+import nz.co.trademe.techtest.listingsdetail.SearchListingDetailsActivity
 import nz.co.trademe.techtest.subcategory.presentation.*
 import nz.co.trademe.wrapper.base.BaseViewModelActivity
 import nz.co.trademe.wrapper.base.ViewModelFactory
 import nz.co.trademe.wrapper.base.plusAssign
 import javax.inject.Inject
 
-const val GENERAL_SEARCH_ROWS = "20"
 class SubCategoryActivity : BaseViewModelActivity<SubCategoryViewModel, SubCategoryState>() {
 
     companion object {
@@ -63,13 +64,16 @@ class SubCategoryActivity : BaseViewModelActivity<SubCategoryViewModel, SubCateg
                 title = intent.extras.getString(EXTRA_CATEGORY_NAME)
         }
         compositeBag += view.searchListingView.setListingsListener()
-            ?.subscribe { category ->
-
+            ?.subscribe { listing ->
+                startActivity(SearchListingDetailsActivity.newIntent(this@SubCategoryActivity,listing.listingId,listing.title!!))
             }!!
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> onBackPressed()
+        }
+        return true
     }
 
     private fun setObservers() {
@@ -94,6 +98,4 @@ class SubCategoryActivity : BaseViewModelActivity<SubCategoryViewModel, SubCateg
             }
         })
     }
-
-
 }

@@ -15,7 +15,7 @@ class NavigationBarView @JvmOverloads constructor(
     attributeSet: AttributeSet? = null,
     defStyle: Int = 0
 ) : ConstraintLayout(context, attributeSet, defStyle) {
-    private var adapter: TradeMeAdapter<Category, TradeMeNavigationViewHolder>? = null
+    private lateinit var adapter: TradeMeAdapter<Category, TradeMeNavigationViewHolder>
     init {
         LayoutInflater.from(context).inflate(R.layout.view_navigation, this, true)
         setupAdapter()
@@ -40,5 +40,12 @@ class NavigationBarView @JvmOverloads constructor(
 
     fun addNewCategory(model: Category) {
         adapter?.add(model)
+    }
+    fun removeLast(){
+       adapter.remove(adapter.items[adapter.itemSize-1])
+    }
+
+    fun clear() {
+        adapter.clear()
     }
 }

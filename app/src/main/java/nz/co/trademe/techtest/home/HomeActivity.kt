@@ -23,6 +23,7 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel, HomeState>() {
     private val screen by lazy { HomeScreen() }
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+    var subLevel: Int = 0
     override val vm by lazy {
         ViewModelProviders.of(this@HomeActivity, viewModelFactory).get(HomeViewModel::class.java)
     }
@@ -46,18 +47,16 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel, HomeState>() {
         compositeBag += view.categoriesView.setCategoriesListener()
             ?.subscribe { category ->
                 if (!category.isLeaf) {
+                    subLevel++
                     vm.getTopLevelCategories(category.id)
                     navigationBar.addNewCategory(category)
                     navigationBar.show()
                 } else {
-                    startActivity(SubCategoryActivity.newIntent(this@HomeActivity,category.id,category.name))
+                    startActivity(SubCategoryActivity.newIntent(this@HomeActivity, category.id, category.name))
                 }
             }!!
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
 
     private fun setObservers() {
         setupVmState()
@@ -80,6 +79,22 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel, HomeState>() {
                 is HomeEvent.ReloadCategories -> reloadCategoriesEvent()
             }
         })
+    }
+
+    override fun onBackPressed() {
+        if (subLevel > 0) {
+            subLevel--
+            vm.getTopLevelCategories("${subLevel}")
+            if(subLevel==0) {
+                navigationBar.clear()
+                navigationBar.hide()
+            }
+            else{
+                navigationBar.removeLast()
+            }
+        }
+        else
+            super.onBackPressed()
     }
 
 
